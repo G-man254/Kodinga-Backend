@@ -2,11 +2,19 @@ import express from "express";
 import "dotenv/config";
 import { connectingDb } from "./src/database/config.js";
 import { carRouter } from "./src/routes/carRouter.js";
+import cors from "cors";
 // dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
+//uaing cors to establish communication with frontend
+
+app.use(
+  cors({
+    origin: "http://localhost:8080",
+  })
+);
 
 connectingDb();
 // createCar();
