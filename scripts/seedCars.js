@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config(); // ✅ This is the right way to initialize
 import mongoose from "mongoose";
 import "dotenv/config";
 import { Car } from "../src/database/models/cars.js";
@@ -16,6 +18,10 @@ const carsData = [
     ],
     price_per_day: 45,
     status: "available",
+    owner: {
+      firstName: "Alice",
+      lastName: "K"
+    }
   },
   {
     make: "Honda",
@@ -27,6 +33,10 @@ const carsData = [
     photo_urls: ["https://example.com/honda-civic-1.jpg"],
     price_per_day: 50,
     status: "available",
+    owner: {
+      firstName: "Patrick",
+      lastName: "Kiarie"
+    }
   },
   {
     make: "Ford",
@@ -41,6 +51,10 @@ const carsData = [
     ],
     price_per_day: 80,
     status: "booked",
+    owner: {
+      firstName: "Alvin",
+      lastName: "G"
+    }
   },
   {
     make: "Tesla",
@@ -52,6 +66,10 @@ const carsData = [
     photo_urls: ["https://example.com/tesla-model3-1.jpg"],
     price_per_day: 90,
     status: "available",
+    owner: {
+      firstName: "Pinky",
+      lastName: "Kiarie"
+    }
   },
   {
     make: "BMW",
@@ -66,6 +84,10 @@ const carsData = [
     ],
     price_per_day: 75,
     status: "maintenance",
+    owner: {
+      firstName: "Jack",
+      lastName: "Ma"
+    }
   },
 ];
 
@@ -79,10 +101,11 @@ const seedDatabase = async () => {
     console.log("Database was connected");
     console.log("Collection name :", Car.collection.name);
 
-    const inserResult = await Car.insertMany(carsData);
-    console.log(`${carsData.length} cars inserted successfully`);
+    const insertResult = await Car.insertMany(carsData);
+    console.log(`${insertResult.length} cars inserted successfully`);
   } catch (error) {
     console.log("An error occured with adding the cars");
+    console.error(error);
   } finally {
     await mongoose.disconnect();
     process.exit(0);

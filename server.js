@@ -1,14 +1,14 @@
-import express from "express";
 import "dotenv/config";
+import express from "express";
 import { connectingDb } from "./src/database/config.js";
 import { carRouter } from "./src/routes/carRouter.js";
 import cors from "cors";
 // dotenv.config();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
-//uaing cors to establish communication with frontend
+//using cors to establish communication with frontend
 
 app.use(
   cors({
