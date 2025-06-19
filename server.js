@@ -30,6 +30,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", carRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', ()=> {
+  console.log(`Server is listening on port ${PORT}`);
 });
