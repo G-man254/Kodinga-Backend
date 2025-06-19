@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://kodinga.onrender.com",
+    origin: "https://kodinga.onrender.com, http://localhost:8080",
   })
 );
 
